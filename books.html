@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Books - BookHive</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">📚 BookHive</div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Books Section -->
+    <main>
+        <section class="featured">
+
+            <h2>Explore Our Books 📚</h2>
+
+            <p class="section-description">
+                Find your next favourite read at BookHive.
+            </p>
+
+            <!-- Search Box -->
+            <input
+                type="text"
+                id="bookSearch"
+                placeholder="🔍 Search for a book..."
+                aria-label="Search books"
+            >
+
+            <p id="noResults" hidden>
+                No books found. Try another title.
+            </p>
+
+            <!-- Book Cards -->
+            <div class="book-grid">
+
+                <article class="book-card">
+                    <div class="book-cover">📕</div>
+                    <h3>Atomic Habits</h3>
+                    <p>James Clear</p>
+                    <div class="price">₹399</div>
+                    <button type="button" class="btn">Add to Cart</button>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-cover">📗</div>
+                    <h3>The Alchemist</h3>
+                    <p>Paulo Coelho</p>
+                    <div class="price">₹299</div>
+    <button type="button" class="btn" onclick="alert('Book added to cart!')">Add to Cart</button>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-cover">📘</div>
+                    <h3>Ikigai</h3>
+                    <p>Héctor García and Francesc Miralles</p>
+                    <div class="price">₹349</div>
+                    <button type="button" class="btn">Add to Cart</button>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-cover">📙</div>
+                    <h3>Rich Dad Poor Dad</h3>
+                    <p>Robert Kiyosaki</p>
+                    <div class="price">₹299</div>
+                    <button type="button" class="btn">Add to Cart</button>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-cover">📔</div>
+                    <h3>Wings of Fire</h3>
+                    <p>APJ Abdul Kalam</p>
+                    <div class="price">₹249</div>
+                    <button type="button" class="btn">Add to Cart</button>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-cover">📒</div>
+                    <h3>Think Like a Monk</h3>
+                    <p>Jay Shetty</p>
+                    <div class="price">₹349</div>
+                    <button type="button" class="btn">Add to Cart</button>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 BookHive. Made for book lovers.</p>
+    </footer>
+
+    <!-- Book Search JavaScript -->
+    <script>
+        const searchInput = document.getElementById("bookSearch");
+        const bookCards = document.querySelectorAll(".book-card");
+        const noResults = document.getElementById("noResults");
+
+        searchInput.addEventListener("input", function () {
+            const searchText = this.value.toLowerCase().trim();
+            let visibleBooks = 0;
+
+            bookCards.forEach(function (card) {
+                const bookName = card
+                    .querySelector("h3")
+                    .textContent.toLowerCase();
+
+                const matches = bookName.includes(searchText);
+
+                card.style.display = matches ? "" : "none";
+
+                if (matches) {
+                    visibleBooks++;
+                }
+            });
+
+            noResults.hidden = visibleBooks > 0;
+        });
+    </script>
+
+<script>
+    document.querySelectorAll(".btn").forEach(function(button) {
+        button.addEventListener("click", function() {
+            alert("Book added to cart!");
+        });
+    });
+</script>
+
+</body>
+</html>
